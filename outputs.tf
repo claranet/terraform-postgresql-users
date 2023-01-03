@@ -10,6 +10,6 @@ output "password" {
 }
 
 output "database" {
-  description = "Database"
+  description = "Database name"
   value       = var.database
 }

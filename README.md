@@ -4,7 +4,7 @@
 Terraform module using `PostgreSQL` provider to create users and manage their roles on an existing database.
 This module will be used in combination with others PostgreSQL modules (like [`azure-db-postgresql-flexible`](https://registry.terraform.io/modules/claranet/db-postgresql-flexible/azurerm/) for example).
 
-**Note:** For security reasons, by default this module revoke privileges on the default `public` PostgreSQL schema.
+**Note:** For security reasons, this module revoke privileges on the default `public` PostgreSQL schema.
 
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules
@@ -121,9 +121,8 @@ module "postgresql_users" {
 
   administrator_login = module.db_pg_flex.postgresql_flexible_administrator_login
 
-  user_suffix_enabled = true
-  user                = each.key
-  database            = each.key
+  user     = each.key
+  database = each.key
 }
 ```
 
@@ -155,20 +154,20 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | administrator\_login | Server administrator user name. | `string` | n/a | yes |
-| database | Database name | `string` | n/a | yes |
-| database\_user\_search\_path | User search path | `string` | `null` | no |
-| functions\_privileges | List of sequences privileges | `list(string)` | `[]` | no |
+| database | Database in which create the user. | `string` | n/a | yes |
+| database\_user\_search\_path | User search path. | `string` | `null` | no |
+| functions\_privileges | User functions privileges, execution privileges if not defined. | `list(string)` | `[]` | no |
 | password | User password, generated if not set. | `string` | `null` | no |
-| roles | List of roles | `list(string)` | `[]` | no |
-| sequences\_privileges | List of sequences privileges | `list(string)` | `[]` | no |
-| tables\_privileges | List of tables privileges | `list(string)` | `[]` | no |
-| user | User name for the current database. Generated if not set `<database>_user`. | `string` | `null` | no |
+| roles | User database roles list. | `list(string)` | `[]` | no |
+| sequences\_privileges | User sequences privileges, all privileges if not defined. | `list(string)` | `[]` | no |
+| tables\_privileges | User tables privileges, all privileges if not defined. | `list(string)` | `[]` | no |
+| user | Name of the user to create. Defaults to `<database>_user` if not set. | `string` | `null` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| database | Database |
+| database | Database name |
 | password | Password |
 | user | User |
 <!-- END_TF_DOCS -->

@@ -93,7 +93,6 @@ module "postgresql_users" {
 
   administrator_login = module.db_pg_flex.postgresql_flexible_administrator_login
 
-  user_suffix_enabled = true
-  user                = each.key
-  database            = each.key
+  user     = each.key
+  database = each.key
 }
