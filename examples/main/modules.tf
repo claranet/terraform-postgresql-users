@@ -78,7 +78,7 @@ module "db_pg_flex" {
 provider "postgresql" {
   host      = module.db_pg_flex.postgresql_flexible_fqdn
   port      = 5432
-  username  = var.administrator_login
+  username  = module.db_pg_flex.postgresql_flexible_administrator_login
   password  = var.administrator_password
   sslmode   = "require"
   superuser = false
@@ -91,7 +91,7 @@ module "postgresql_users" {
 
   for_each = toset(module.db_pg_flex.postgresql_flexible_databases_names)
 
-  administrator_login = var.administrator_login
+  administrator_login = module.db_pg_flex.postgresql_flexible_administrator_login
 
   user_suffix_enabled = true
   user                = each.key

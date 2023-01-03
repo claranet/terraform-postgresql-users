@@ -104,7 +104,7 @@ module "db_pg_flex" {
 provider "postgresql" {
   host      = module.db_pg_flex.postgresql_flexible_fqdn
   port      = 5432
-  username  = var.administrator_login
+  username  = module.db_pg_flex.postgresql_flexible_administrator_login
   password  = var.administrator_password
   sslmode   = "require"
   superuser = false
@@ -117,7 +117,7 @@ module "postgresql_users" {
 
   for_each = toset(module.db_pg_flex.postgresql_flexible_databases_names)
 
-  administrator_login = var.administrator_login
+  administrator_login = module.db_pg_flex.postgresql_flexible_administrator_login
 
   user_suffix_enabled = true
   user                = each.key
@@ -152,11 +152,11 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| administrator\_login | Global server user name | `string` | n/a | yes |
+| administrator\_login | Server administrator user name. | `string` | n/a | yes |
 | database | Database name | `string` | n/a | yes |
 | database\_user\_search\_path | User search path | `string` | `null` | no |
 | functions\_privileges | List of sequences privileges | `list(string)` | `[]` | no |
-| password | Password if not generated | `string` | `null` | no |
+| password | User password, generated if not set. | `string` | `null` | no |
 | roles | List of roles | `list(string)` | `[]` | no |
 | sequences\_privileges | List of sequences privileges | `list(string)` | `[]` | no |
 | tables\_privileges | List of tables privileges | `list(string)` | `[]` | no |
@@ -167,6 +167,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| database | Database |
 | password | Password |
 | user | User |
 <!-- END_TF_DOCS -->

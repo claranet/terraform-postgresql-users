@@ -8,3 +8,8 @@ output "password" {
   value       = coalesce(var.password, random_password.db_password.result)
   sensitive   = true
 }
+
+output "database" {
+  description = "Database"
+  value       = var.database
+}
