@@ -1,7 +1,7 @@
 # PostgreSQL users module
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/users/postgresql/)
 
-Terraform module using `PostgreSQL` provider to create users and manage their roles on an existing Database.
+Terraform module using `PostgreSQL` provider to create users and manage their roles on an existing database.
 This module will be used in combination with others PostgreSQL modules (like [`azure-db-postgresql-flexible`](https://registry.terraform.io/modules/claranet/db-postgresql-flexible/azurerm/) for example).
 
 <!-- BEGIN_TF_DOCS -->

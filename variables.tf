@@ -5,13 +5,13 @@ variable "user" {
 
 variable "administrator_login" {
   type        = string
-  description = "Global server user name"
+  description = "Server administrator user name."
 }
 
 variable "password" {
   type        = string
   default     = null
-  description = "Password if not generated"
+  description = "User password, generated if not set."
 }
 
 variable "database" {

@@ -19,7 +19,7 @@ variable "stack" {
 }
 
 variable "administrator_login" {
-  description = "Administrator login for MariaDB server"
+  description = "Administrator login for PostgreSQL server"
   type        = string
 }
 
