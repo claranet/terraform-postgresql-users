@@ -4,6 +4,8 @@
 Terraform module using `PostgreSQL` provider to create users and manage their roles on an existing database.
 This module will be used in combination with others PostgreSQL modules (like [`azure-db-postgresql-flexible`](https://registry.terraform.io/modules/claranet/db-postgresql-flexible/azurerm/) for example).
 
+**Note:** For security reasons, by default this module revoke privileges on the default `public` PostgreSQL schema.
+
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules
 
@@ -160,8 +162,7 @@ No modules.
 | roles | List of roles | `list(string)` | `[]` | no |
 | sequences\_privileges | List of sequences privileges | `list(string)` | `[]` | no |
 | tables\_privileges | List of tables privileges | `list(string)` | `[]` | no |
-| user | User name for the current database | `string` | n/a | yes |
-| user\_suffix\_enabled | Append `_user` suffix | `bool` | `false` | no |
+| user | User name for the current database. Generated if not set `<database>_user`. | `string` | `null` | no |
 
 ## Outputs
 

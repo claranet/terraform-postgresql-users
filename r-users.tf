@@ -4,7 +4,7 @@ resource "random_password" "db_password" {
 }
 
 resource "postgresql_role" "db_user" {
-  name        = var.user_suffix_enabled ? format("%s_user", var.user) : var.user
+  name        = coalesce(var.user, format("%s_user", var.database))
   login       = true
   password    = coalesce(var.password, random_password.db_password.result)
   create_role = true

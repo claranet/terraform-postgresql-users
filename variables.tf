@@ -1,6 +1,7 @@
 variable "user" {
   type        = string
-  description = "User name for the current database"
+  description = "User name for the current database. Generated if not set `<database>_user`."
+  default     = null
 }
 
 variable "administrator_login" {
@@ -17,12 +18,6 @@ variable "password" {
 variable "database" {
   type        = string
   description = "Database name"
-}
-
-variable "user_suffix_enabled" {
-  type        = bool
-  default     = false
-  description = "Append `_user` suffix"
 }
 
 variable "tables_privileges" {
