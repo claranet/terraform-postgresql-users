@@ -1,1 +1,2 @@
-user = ["bdd1", "bdd2"]
+user     = "bdd1"
+database = "bdd1"

@@ -4,8 +4,6 @@
 Terraform module using `PostgreSQL` provider to create users and manage their roles on an existing database.
 This module will be used in combination with others PostgreSQL modules (like [`azure-db-postgresql-flexible`](https://registry.terraform.io/modules/claranet/db-postgresql-flexible/azurerm/) for example).
 
-**Note:** For security reasons, this module revoke privileges on the default `public` PostgreSQL schema.
-
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules
 
@@ -119,10 +117,22 @@ module "postgresql_users" {
 
   for_each = toset(module.db_pg_flex.postgresql_flexible_databases_names)
 
-  administrator_login = module.db_pg_flex.postgresql_flexible_administrator_login
-
   user     = each.key
   database = each.key
+}
+
+module "postgresql_configuration" {
+  # source  = "claranet/hardening/postgresql"
+  # version = "x.x.x"
+  source = "git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/postgresql-hardening.git?ref=AZ-930_postgresql_hard"
+
+  for_each = toset(module.db_pg_flex.postgresql_flexible_databases_names)
+
+  administrator_login = module.db_pg_flex.postgresql_flexible_administrator_login
+
+  user        = module.postgresql_users[each.key].user
+  database    = each.key
+  schema_name = each.key
 }
 ```
 
@@ -141,26 +151,17 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [postgresql_default_privileges.user_functions_privileges](https://registry.terraform.io/providers/cyrilgdn/postgresql/latest/docs/resources/default_privileges) | resource |
-| [postgresql_default_privileges.user_sequences_privileges](https://registry.terraform.io/providers/cyrilgdn/postgresql/latest/docs/resources/default_privileges) | resource |
-| [postgresql_default_privileges.user_tables_privileges](https://registry.terraform.io/providers/cyrilgdn/postgresql/latest/docs/resources/default_privileges) | resource |
-| [postgresql_grant.revoke_public](https://registry.terraform.io/providers/cyrilgdn/postgresql/latest/docs/resources/grant) | resource |
 | [postgresql_role.db_user](https://registry.terraform.io/providers/cyrilgdn/postgresql/latest/docs/resources/role) | resource |
-| [postgresql_schema.db_schema](https://registry.terraform.io/providers/cyrilgdn/postgresql/latest/docs/resources/schema) | resource |
 | [random_password.db_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| administrator\_login | Server administrator user name. | `string` | n/a | yes |
 | database | Database in which create the user. | `string` | n/a | yes |
 | database\_user\_search\_path | User search path. | `string` | `null` | no |
-| functions\_privileges | User functions privileges, execution privileges if not defined. | `list(string)` | `[]` | no |
 | password | User password, generated if not set. | `string` | `null` | no |
 | roles | User database roles list. | `list(string)` | `[]` | no |
-| sequences\_privileges | User sequences privileges, all privileges if not defined. | `list(string)` | `[]` | no |
-| tables\_privileges | User tables privileges, all privileges if not defined. | `list(string)` | `[]` | no |
 | user | Name of the user to create. Defaults to `<database>_user` if not set. | `string` | `null` | no |
 
 ## Outputs
