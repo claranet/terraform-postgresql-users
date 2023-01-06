@@ -4,6 +4,11 @@ variable "user" {
   default     = null
 }
 
+variable "administrator_login" {
+  type        = string
+  description = "Server administrator user name."
+}
+
 variable "password" {
   type        = string
   default     = null

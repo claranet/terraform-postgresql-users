@@ -2,7 +2,8 @@
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/users/postgresql/)
 
 Terraform module using `PostgreSQL` provider to create users and manage their roles on an existing database.
-This module will be used in combination with others PostgreSQL modules (like [`azure-db-postgresql-flexible`](https://registry.terraform.io/modules/claranet/db-postgresql-flexible/azurerm/) for example).
+This module will be used combined with others PostgreSQL modules (like [`azure-db-postgresql-flexible`](https://registry.terraform.io/modules/claranet/db-postgresql-flexible/azurerm/) or [`postgresql-database-configuration`](https://registry.terraform.io/modules/claranet/database-configuration/postgresql/) for example).
+
 
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules
@@ -81,6 +82,8 @@ module "postgresql_users" {
 
   for_each = toset(module.db_pg_flex.postgresql_flexible_databases_names)
 
+  administrator_login = module.db_pg_flex.postgresql_flexible_administrator_login
+
   user     = each.key
   database = each.key
 }
@@ -122,6 +125,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| administrator\_login | Server administrator user name. | `string` | n/a | yes |
 | database | Database in which create the user. | `string` | n/a | yes |
 | password | User password, generated if not set. | `string` | `null` | no |
 | roles | User database roles list. | `list(string)` | `[]` | no |

@@ -10,6 +10,6 @@ resource "postgresql_role" "db_user" {
   login       = true
   password    = coalesce(var.password, one(random_password.db_password[*].result))
   create_role = true
-  roles       = var.roles
+  roles       = concat([var.administrator_login], var.roles)
   search_path = compact([var.database, "$user", var.user_search_path])
 }
