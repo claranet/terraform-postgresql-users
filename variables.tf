@@ -21,7 +21,7 @@ variable "roles" {
   default     = []
 }
 
-variable "database_user_search_path" {
+variable "user_search_path" {
   description = "User search path."
   type        = string
   default     = null

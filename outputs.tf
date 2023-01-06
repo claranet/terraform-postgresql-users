@@ -5,7 +5,7 @@ output "user" {
 
 output "password" {
   description = "Password"
-  value       = coalesce(var.password, random_password.db_password.result)
+  value       = coalesce(var.password, one(random_password.db_password[*].result))
   sensitive   = true
 }
 
