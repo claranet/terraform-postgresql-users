@@ -1,4 +1,4 @@
-# Unreleased
+# v6.0.0 - 2023-01-20
 
 Added
   * AZ-930: First release of this module
