@@ -76,9 +76,8 @@ provider "postgresql" {
 }
 
 module "postgresql_users" {
-  # source  = "claranet/users/postgresql"
-  # version = "x.x.x"
-  source = "git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/postgresql-users.git?ref=AZ-930_postgresql_users_module"
+  source  = "claranet/users/postgresql"
+  version = "x.x.x"
 
   for_each = toset(module.db_pg_flex.postgresql_flexible_databases_names)
 
@@ -89,9 +88,8 @@ module "postgresql_users" {
 }
 
 module "postgresql_configuration" {
-  # source  = "claranet/database-configuration/postgresql"
-  # version = "x.x.x"
-  source = "git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/postgresql-database-configuration.git?ref=AZ-930_postgresql_hard"
+  source  = "claranet/database-configuration/postgresql"
+  version = "x.x.x"
 
   for_each = toset(module.db_pg_flex.postgresql_flexible_databases_names)
 
