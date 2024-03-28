@@ -66,9 +66,13 @@ module "db_pg_flex" {
 
   allowed_cidrs = {}
 
-  databases_names     = ["mydatabase"]
-  databases_collation = { mydatabase = "en_US.UTF8" }
-  databases_charset   = { mydatabase = "UTF8" }
+  databases = {
+    mydatabase = {
+      collation = "en_US.utf8"
+      charset   = "UTF8"
+    }
+  }
+
 
   logs_destinations_ids = []
 }
