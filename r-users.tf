@@ -6,7 +6,7 @@ resource "random_password" "db_password" {
 }
 
 resource "postgresql_role" "db_user" {
-  name        = coalesce(var.user, format("%s_user", var.database))
+  name        = local.user
   login       = true
   password    = coalesce(var.password, one(random_password.db_password[*].result))
   create_role = true
@@ -14,7 +14,8 @@ resource "postgresql_role" "db_user" {
   search_path = compact([var.database, "$user", var.user_search_path])
 }
 
+# Grant the newly created role to the administrator
 resource "postgresql_grant_role" "db_user" {
   role       = var.administrator_login
-  grant_role = var.user
+  grant_role = local.user
 }

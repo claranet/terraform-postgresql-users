@@ -6,7 +6,7 @@ variable "user" {
 
 variable "administrator_login" {
   type        = string
-  description = "Server administrator user name."
+  description = "Server administrator user name, used to allow it on the created roles."
 }
 
 variable "password" {

@@ -139,7 +139,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| administrator\_login | Server administrator user name. | `string` | n/a | yes |
+| administrator\_login | Server administrator user name, used to allow it on the created roles. | `string` | n/a | yes |
 | database | Database in which create the user. | `string` | n/a | yes |
 | password | User password, generated if not set. | `string` | `null` | no |
 | roles | User database roles list. | `list(string)` | `[]` | no |
