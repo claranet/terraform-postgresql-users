@@ -1,3 +1,32 @@
+## 6.1.2 (2025-01-31)
+
+### Bug Fixes
+
+* fix admin role grant c6d04ad
+
+### Miscellaneous Chores
+
+* **deps:** update dependency opentofu to v1.8.4 cf6c0f0
+* **deps:** update dependency opentofu to v1.8.6 11b768f
+* **deps:** update dependency opentofu to v1.8.8 250cb8a
+* **deps:** update dependency opentofu to v1.9.0 acb3084
+* **deps:** update dependency pre-commit to v4.0.1 741209a
+* **deps:** update dependency pre-commit to v4.1.0 4256a5a
+* **deps:** update dependency tflint to v0.54.0 de83f16
+* **deps:** update dependency tflint to v0.55.0 5ade74d
+* **deps:** update dependency trivy to v0.56.2 98fe5b4
+* **deps:** update dependency trivy to v0.57.1 06da664
+* **deps:** update dependency trivy to v0.58.2 924fe30
+* **deps:** update dependency trivy to v0.59.0 ffa77c8
+* **deps:** update pre-commit hook alessandrojcm/commitlint-pre-commit-hook to v9.19.0 7ccc024
+* **deps:** update pre-commit hook alessandrojcm/commitlint-pre-commit-hook to v9.20.0 94814b2
+* **deps:** update pre-commit hook antonbabenko/pre-commit-terraform to v1.96.2 d448eab
+* **deps:** update pre-commit hook antonbabenko/pre-commit-terraform to v1.97.0 2ceef91
+* **deps:** update tools 971e56d
+* **deps:** update tools a77f0cb
+* **deps:** update tools 39fa9ba
+* updates tooling configs f8ef01a
+
 ## 6.1.1 (2024-10-08)
 
 ### Documentation
