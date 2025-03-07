@@ -145,6 +145,7 @@ No modules.
 | roles | User database roles list. | `list(string)` | `[]` | no |
 | user | Name of the user to create. Defaults to `<database>_user` if not set. | `string` | `null` | no |
 | user\_search\_path | User search path. | `string` | `null` | no |
+| with\_admin\_option | Giving ability to grant membership to others or not for the role. | `bool` | `false` | no |
 
 ## Outputs
 

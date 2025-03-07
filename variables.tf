@@ -31,3 +31,9 @@ variable "user_search_path" {
   type        = string
   default     = null
 }
+
+variable "with_admin_option" {
+  description = "Giving ability to grant membership to others or not for the role."
+  type        = bool
+  default     = false
+}

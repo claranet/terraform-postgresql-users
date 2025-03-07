@@ -16,6 +16,7 @@ resource "postgresql_role" "db_user" {
 
 # Grant the newly created role to the administrator
 resource "postgresql_grant_role" "db_user" {
-  role       = var.administrator_login
-  grant_role = local.user
+  role              = var.administrator_login
+  grant_role        = local.user
+  with_admin_option = var.with_admin_option
 }
