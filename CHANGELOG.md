@@ -1,3 +1,16 @@
+## 6.2.0 (2025-03-07)
+
+### Features
+
+* **AZ-1504:** add support of the with_admin_option parameter 314b279
+
+### Miscellaneous Chores
+
+* **deps:** update dependency tflint to v0.55.1 eac4326
+* **deps:** update dependency trivy to v0.59.1 8e60623
+* **deps:** update dependency trivy to v0.60.0 f03487a
+* **deps:** update pre-commit hook alessandrojcm/commitlint-pre-commit-hook to v9.21.0 5ae8546
+
 ## 6.1.2 (2025-01-31)
 
 ### Bug Fixes
